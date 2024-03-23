@@ -96,5 +96,23 @@ class HBNBCommand(cmd.Cmd):
         print("Prints all string representation of all instances based or not on the class name")
         print("Ex: $ all BaseModel or $ all")
 
+    def do_update(self, line):
+        pattern =  r'^(\S+)(?:\s(\S+)(?:\s(\S+)(?:\s((?:"[^"]*")|(?:(\S)+)))?)?)?'
+        match = re.match(pattern, line)
+        if match:
+            cls_name = match.group(1)
+            id = match.group(2)
+            attr_name = match.group(3)
+            attr_value = match.group(4)
+        if len(line) < 1:
+            print("** class name missing **")
+        elif cls_name not in storage.all_classes():
+            print("** class doesn't exist **")
+        elif not id:
+            print("** instance id missing **")
+        else:
+            setattr(storage.all_classes()[cls_name](), attr_name, attr_value)
+            storage.save()
+
 if __name__ == '__main__':
     HBNBCommand().cmdloop()

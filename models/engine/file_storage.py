@@ -80,7 +80,10 @@ class FileStorage:
                 "Review": Review
             }
         def obj_attr(self):
-            "Returns all cls attributes mapping to their corresponding types"
+            """
+            Helper Method
+            Returns all cls attributes mapping to their corresponding types
+            """
             return{
                 "BaseModel":
                 {
