@@ -37,7 +37,6 @@ class FileStorage:
             obj: The object to be added.
         """
 
-        # special_key = f"{obj.__class__.__name__}.{obj.id}"
         special_key = f"{obj.__class__.__name__}.{obj.id}"
         FileStorage.__objects[special_key] = obj
 
@@ -54,7 +53,7 @@ class FileStorage:
         Loads objects from JSON file into __objects dictionary.
         """
         if not os.path.exists(FileStorage.__file_path):
-            return
+            pass
 
         with open(FileStorage.__file_path, encoding="utf-8") as json_f:
             serialized_data = json.load(json_f)
