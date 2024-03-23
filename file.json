@@ -1,0 +1,39 @@
+{
+    "BaseModel.c1cbdf8d-69cf-4ade-8fd9-ecba55a23dd1": {
+        "__class__": "BaseModel",
+        "id": "c1cbdf8d-69cf-4ade-8fd9-ecba55a23dd1",
+        "created_at": "2024-03-22T18:31:22.870371",
+        "updated_at": "2024-03-22T18:31:22.870465"
+    },
+    "User.2f81f85f-7b45-4717-989d-9d231f30d5bd": {
+        "__class__": "BaseModel",
+        "id": "2f81f85f-7b45-4717-989d-9d231f30d5bd",
+        "created_at": "2024-03-22T18:31:33.315552",
+        "updated_at": "2024-03-22T18:32:09.189811",
+        "name": "Emmanuel"
+    },
+    "Place.f02888b3-9fa0-47c8-9584-1da4a2917b73": {
+        "__class__": "Place",
+        "id": "f02888b3-9fa0-47c8-9584-1da4a2917b73",
+        "created_at": "2024-03-22T20:57:42.137656",
+        "updated_at": "2024-03-22T20:57:42.137703"
+    },
+    "User.03fb57ce-0cf6-4e9d-bfca-98148bd0f824": {
+        "__class__": "BaseModel",
+        "id": "03fb57ce-0cf6-4e9d-bfca-98148bd0f824",
+        "created_at": "2024-03-22T21:20:49.709402",
+        "updated_at": "2024-03-22T21:20:49.709417"
+    },
+    "User.80878905-642c-4432-aa43-c868b9d37e68": {
+        "__class__": "BaseModel",
+        "id": "80878905-642c-4432-aa43-c868b9d37e68",
+        "created_at": "2024-03-22T21:37:26.645927",
+        "updated_at": "2024-03-22T21:37:26.646024"
+    },
+    "State.480bcc80-f289-43eb-a459-d2dbda6bcdb7": {
+        "__class__": "State",
+        "id": "480bcc80-f289-43eb-a459-d2dbda6bcdb7",
+        "created_at": "2024-03-22T21:39:09.606286",
+        "updated_at": "2024-03-22T21:39:09.606341"
+    }
+}
