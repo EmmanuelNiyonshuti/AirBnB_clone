@@ -2,11 +2,11 @@
 
 ## Project Description
 
-Welcome to My AirBnB Clone project! This project is an essential step towards building a full web application. The primary goal of this initial phase is developing the backend and integrating it with a console application using the cmd module in Python.
+Welcome to my AirBnB Clone project! This project is an essential step towards building a full web application. The primary goal of this initial phase is developing the backend and integrating it with a console application using the cmd module in Python.
 
 ### Data Storage
 
-Data, represented as Python objects, is generated and stored in a JSON file, acting as a database. We built a storage system for storing our objects in a JSON file and retrieving them using the json module in Python 3.
+Data, represented as Python objects, is generated and stored in a JSON file, acting as a database. I built a storage system for storing my objects in a JSON file and retrieving them using the json module in Python 3.
 
 ### Command-Line Interface
 
@@ -14,20 +14,16 @@ The command-line interface mimics the Bash shell but with a limited set of comma
 
 This command-line interpreter acts as the frontend of the web app, allowing users to interact with the backend developed using Python's object-oriented programming (OOP) paradigm.
 
-Some of the available commands include:
+for now some of the available commands includes:
 
 - show
 - create
 - update
-- destroy
-- count
 
 Additionally, the following actions can be performed as part of the command-line interpreter's implementation, coupled with the backend and file storage system:
 
 - Creating new objects (e.g., a new User or a new Place)
 - Retrieving an object from a file, a database, etc.
-- Performing operations on objects (count, compute stats, etc.)
-- Updating attributes of an object
 - Destroying an object
 
 ## Getting Started
@@ -38,7 +34,6 @@ These instructions will help you set up a copy of the project on your local mach
 
 Clone the repository from GitHub. This will include the simple shell program and all its dependencies.
 
-```bash
 git clone https://github.com/jzamora5/AirBnB_clone.git
 
 After cloning the repository, you'll find a folder named AirBnB_clone, containing several files necessary for the program to function:
@@ -53,7 +48,9 @@ models/city.py: City class that inherits from BaseModel.
 models/amenity.py: Amenity class that inherits from BaseModel.
 models/place.py: Place class that inherits from BaseModel.
 models/review.py: Review class that inherits from BaseModel.
+
 Usage
+
 The program can operate in two modes: interactive and non-interactive.
 
 Interactive Mode
@@ -76,6 +73,7 @@ To issue commands to the console, they can be piped through an echo in the case 
 In interactive mode, commands are entered via the keyboard when the prompt appears and are recognized upon pressing the Enter key (newline). The console will attempt to execute the command or display an error message if the command fails. In this mode, the console can be exited using the CTRL + D combination, CTRL + C, or the quit command.
 
 Arguments
+
 Most commands accept several options or arguments when executing the program. To ensure the shell recognizes these parameters, separate them with spaces.
 
 Example:
