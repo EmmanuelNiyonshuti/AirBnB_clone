@@ -28,8 +28,7 @@ class FileStorage:
 
     def all(self):
         """returns the dictionary __objects"""
-        # return FileStorage.__objects
-        return self.__objects
+        return FileStorage.__objects
 
     def new(self, obj):
         """
@@ -40,14 +39,14 @@ class FileStorage:
         """
 
         special_key = f"{obj.__class__.__name__}.{obj.id}"
-        self.__objects[special_key] = obj
+        FileStorage.__objects[special_key] = obj
 
     def save(self):
         """
         Saves __objects dictionary to a JSON file.
         """
-        with open(self.__file_path, "w", encoding="utf-8") as json_f:
-            my_dict = {k: v.to_dict()for k, v in self.__objects.items()}
+        with open(FileStorage.__file_path, "w", encoding="utf-8") as json_f:
+            my_dict = {k: v.to_dict()for k, v in FileStorage.__objects.items()}
             json.dump(my_dict, json_f)
 
     def reload(self):
@@ -57,14 +56,14 @@ class FileStorage:
         if not os.path.exists(self.__file_path):
             return
 
-        with open(self.__file_path, encoding="utf-8") as json_f:
+        with open(FileStorage.__file_path,"r" encoding="utf-8") as json_f:
             serialized_data = json.load(json_f)
         objects = {}
         for id, data in serialized_data.items():
             class_name = data["__class__"]
             obj_class = self.all_classes()[class_name]
             objects[id] = obj_class(**data)
-            self.__objects = objects
+            FileStorage.__objects = objects
 
     def all_classes(self):
         """
