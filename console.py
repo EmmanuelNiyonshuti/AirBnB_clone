@@ -110,6 +110,9 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
         elif not id:
             print("** instance id missing **")
+        elif not attr_name:
+            print("** attribute name missing **")
+
         else:
             setattr(storage.all_classes()[cls_name](), attr_name, attr_value)
             storage.save()

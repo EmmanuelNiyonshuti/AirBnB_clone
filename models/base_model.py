@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """
+This module comprises a subclass of base module class.
 """
 
 import uuid
@@ -45,8 +46,8 @@ class BaseModel:
         return {
                 '__class__': __class__.__name__,
                 **self.__dict__,
-                'created_at': self.created_at.isoformat(),
-                'updated_at': self.updated_at.isoformat()
+                'created_at': self.created_at.isoformat('T'),
+                'updated_at': self.updated_at.isoformat('T')
                  }
 
     def __str__(self):
