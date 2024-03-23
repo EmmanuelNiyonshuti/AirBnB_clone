@@ -53,7 +53,7 @@ class FileStorage:
         Loads objects from JSON file into __objects dictionary.
         """
         if not os.path.exists(FileStorage.__file_path):
-            pass
+            return
 
         with open(FileStorage.__file_path, encoding="utf-8") as json_f:
             serialized_data = json.load(json_f)
