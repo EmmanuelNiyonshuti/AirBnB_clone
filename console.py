@@ -5,6 +5,7 @@ This module comprises the entry point of the My console.
 import cmd
 import re
 import sys
+import shlex
 from models.base_model import BaseModel
 from models import storage
 from models.engine.file_storage import FileStorage
