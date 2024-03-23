@@ -5,7 +5,7 @@ This module comprises a subclass of base module class.
 
 import uuid
 from datetime import datetime
-from models import storage
+
 
 class BaseModel:
     def __init__(self, *args, **kwargs):
@@ -32,6 +32,7 @@ class BaseModel:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
+            from models import storage
             storage.new(self)
 
     def save(self):
