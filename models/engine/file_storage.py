@@ -45,7 +45,7 @@ class FileStorage:
         """
         Saves __objects dictionary to a JSON file.
         """
-        with open(FileStorage.__file_path, "w", encoding="utf-8") as json_f:
+        with open(FileStorage.__file_path, "a", encoding="utf-8") as json_f:
             my_dict = {k: v.to_dict()for k, v in FileStorage.__objects.items()}
             json.dump(my_dict, json_f)
 
@@ -63,7 +63,7 @@ class FileStorage:
             class_name = data["__class__"]
             obj_class = self.all_classes()[class_name]
             objects[id] = obj_class(**data)
-        FileStorage.__objects = objects
+            FileStorage.__objects = objects
 
     def all_classes(self):
         """
