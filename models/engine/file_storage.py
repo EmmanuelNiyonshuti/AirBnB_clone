@@ -37,7 +37,8 @@ class FileStorage:
             obj: The object to be added.
         """
 
-        special_key = f"{obj.__class__.__name__}.{obj.id}"
+        # special_key = f"{obj.__class__.__name__}.{obj.id}"
+        special_key = f"{type(obj).__name__}.{obj.id}"
         FileStorage.__objects[special_key] = obj
 
     def save(self):
@@ -46,7 +47,7 @@ class FileStorage:
         """
         with open(FileStorage.__file_path, "w", encoding="utf-8") as json_f:
             my_dict = {k: v.to_dict() for k, v in FileStorage.__objects.items()}
-            json.dump(my_dict, json_f)
+            json.dump(my_dict, json_f, indent=4)
 
     def reload(self):
         """
@@ -78,3 +79,58 @@ class FileStorage:
             "Place": Place,
             "Review": Review
             }
+    def obj_attr(self):
+        """
+        Helper Method
+        Returns a nested dictionary  of class names with the dictionary
+        of their attributes mapping to their types accordingly.
+        """
+        return
+    {
+        "BaseModel":
+        {
+            "id": str,
+            "created_at": datetime.datetime,
+            "updated_at": datetime.datetime
+        },
+        "User":
+        {
+            "email": str,
+            "password": str,
+            "first_name": str,
+            "last_name": str
+        },
+        "Place":
+        {
+            "city_id": str,
+            "user_id": str,
+            "name": str,
+            "description": str,
+            "number_rooms": int,
+            "number_bathrooms": int,
+            "max_guest": int,
+            "price_by_night": int,
+            "latitude": float,
+            "longitude": float,
+            "amenity_ids": []
+        },
+        "State":
+        {
+            "name": str
+        },
+        "City":
+        {
+            "state_id": str,
+            "name": str
+        },
+        "Review":
+        {
+            "place_id": str,
+            "user_id": str,
+            "text": str
+        },
+        "Amenity":
+        {
+            "name": str
+        }
+    }
