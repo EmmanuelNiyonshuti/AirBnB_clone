@@ -1,4 +1,12 @@
 #!/usr/bin/python3
+"""
+This module complises File strorage class
+File storage class consists of methods and attributes
+designed to handle serialization
+and deserialization of instances
+of the classes.
+"""
+
 import json
 import os
 import datetime
@@ -46,13 +54,13 @@ class FileStorage:
                 return
             try:
                     with open(FileStorage.__file_path, "r", encoding="utf-8") as json_file:
-                        loaded_data = json.load(json_file)
-                    loaded_objs = {}
-                    for obj_id, obj_data in loaded_data.items():
-                        class_name = obj_data["__class__"]
+                        serialized_data = json.load(json_file)
+                    objects = {}
+                    for id, data in serialized_data.items():
+                        class_name = data["__class__"]
                         obj_class = self.all_classes()[class_name]
-                        loaded_objs[obj_id] = obj_class(**obj_data)
-                    FileStorage.__objects = loaded_objs
+                        objects[id] = obj_class(**data)
+                    FileStorage.__objects = objects
             except json.JSONDecodeError:
                  pass
 

@@ -92,58 +92,8 @@ class HBNBCommand(cmd.Cmd):
            print("** class does not exist **")
    
     def help_all(self):
-        print("Prints all string representation of all instances based or not on the class name\nEx: $ all BaseModel or $ all")
-    
-    def do_count(self, line):
-        pass
-    """def do_update(self, line):
-        if line == "" or line is None:
-            print("** class name missing **")
-            return
-
-        rex = r'^(\S+)(?:\s(\S+)(?:\s(\S+)(?:\s((?:"[^"]*")|(?:(\S)+)))?)?)?'
-        match = re.search(rex, line)
-        classname = match.group(1)
-        uid = match.group(2)
-        attribute = match.group(3)
-        value = match.group(4)
-        if not match:
-            print("** class name missing **")
-        elif classname not in storage.all_classes():
-            print("** class doesn't exist **")
-        elif uid is None:
-            print("** instance id missing **")
-        else:
-            key = f"{classname}.{uid}"
-            if key not in storage.all():
-                print("** no instance found **")
-            elif not attribute:
-                print("** attribute name missing **")
-            elif not value:
-                print("** value missing **")
-            else:
-                cast = None
-                if not re.search('^".*"$', value):
-                    if '.' in value:
-                        cast = float
-                    else:
-                        cast = int
-                else:
-                    value = value.replace('"', '')
-                attr = storage.obj_attr()[classname]
-                if attribute in attr:
-                    value = attr[attribute](value)
-                elif cast:
-                    try:
-                        value = cast(value)
-                    except ValueError:
-                        pass
-                setattr(storage.all()[key], attribute, value)
-                storage.all()[key].save()
-    def help_update(self):
-        print("Updates an instance by adding or updating attribute.")"""
-
-
+        print("Prints all string representation of all instances based or not on the class name")
+        print("Ex: $ all BaseModel or $ all")
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
