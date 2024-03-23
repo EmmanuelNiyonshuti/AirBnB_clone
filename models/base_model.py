@@ -16,7 +16,7 @@ class BaseModel:
             - **kwargs: dict of key-values arguments
         """
 
-        if kwargs is not None or kwargs != {}:
+        if kwargs is not None and kwargs != {}:
             for key in kwargs:
                 if key == "__class__":
                     continue
