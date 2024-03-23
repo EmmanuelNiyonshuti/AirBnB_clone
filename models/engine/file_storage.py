@@ -24,7 +24,7 @@ class FileStorage:
     and deserializes JSON file back to instances
     """
 
-    __file_path, __objects = "", {}
+    __file_path, __objects = "file.json", {}
 
     def all(self):
         """returns the dictionary __objects"""
