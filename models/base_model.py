@@ -45,8 +45,8 @@ class BaseModel:
         return {
                 '__class__': __class__.__name__,
                 **self.__dict__,
-                'created_at': self.created_at.isoformat('T'),
-                'updated_at': self.updated_at.isoformat('T')
+                'created_at': self.created_at.isoformat(),
+                'updated_at': self.updated_at.isoformat()
                  }
 
     def __str__(self):
