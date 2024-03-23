@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
 This module complises File strorage class
-File storage class consists of methods and attributes
+File storage class consist of methods and attributes
 designed to handle serialization
 and deserialization of instances
 of the classes.
@@ -16,6 +16,7 @@ from models.city import City
 from models.place import Place
 from models.amenity import Amenity
 from models.review import Review
+
 
 class FileStorage:
     """
@@ -45,7 +46,7 @@ class FileStorage:
         Saves __objects dictionary to a JSON file.
         """
         with open(FileStorage.__file_path, "w", encoding="utf-8") as json_f:
-            my_dict = {k: v.to_dict() for k, v in FileStorage.__objects.items()}
+            my_dict = {k: v.to_dict()for k, v in FileStorage.__objects.items()}
             json.dump(my_dict, json_f)
 
     def reload(self):
@@ -78,6 +79,7 @@ class FileStorage:
             "Place": Place,
             "Review": Review
             }
+
     def obj_attr(self):
         """
         Helper Method
