@@ -9,7 +9,13 @@ of the classes.
 import datetime
 import json
 import os
-
+from models.base_model import BaseModel
+from models.user import User
+from models.state import State
+from models.city import City
+from models.place import Place
+from models.amenity import Amenity
+from models.review import Review
 
 class FileStorage:
     """
@@ -17,8 +23,7 @@ class FileStorage:
     and deserializes JSON file back to instances
     """
 
-    __file_path = "file.json"
-    __objects = {}
+    __file_path, __objects = "file.json", {}
 
     def all(self):
         """returns the dictionary __objects"""
@@ -49,7 +54,7 @@ class FileStorage:
         """
         if not os.path.exists(FileStorage.__file_path):
             return
-    
+
         with open(FileStorage.__file_path, encoding="utf-8") as json_f:
             serialized_data = json.load(json_f)
         objects = {}
@@ -64,14 +69,6 @@ class FileStorage:
         Helper method
         Returns a dictionary mapping class names to their actual class objects.
         """
-        from models.base_model import BaseModel
-        from models.user import User
-        from models.state import State
-        from models.city import City
-        from models.place import Place
-        from models.amenity import Amenity
-        from models.review import Review
-
         return{
             "BaseModel": BaseModel,
             "User": User,
@@ -80,61 +77,4 @@ class FileStorage:
             "Amenity": Amenity,
             "Place": Place,
             "Review": Review
-        }
-
-    def obj_attr(self):
-        """
-        Helper Method
-        Returns a nested dictionary  of class names with the dictionary
-        of their attributes mapping to their types accordingly.
-        """
-
-        return
-    {
-            "BaseModel":
-            {
-                "id": str,
-                "created_at": datetime.datetime,
-                "updated_at": datetime.datetime
-            },
-            "User":
-            {
-                "email": str,
-                "password": str,
-                "first_name": str,
-                "last_name": str
-            },
-            "Place":
-            {
-                "city_id": str,
-                "user_id": str,
-                "name": str,
-                "description": str,
-                "number_rooms": int,
-                "number_bathrooms": int,
-                "max_guest": int,
-                "price_by_night": int,
-                "latitude": float,
-                "longitude": float,
-                "amenity_ids": []
-            },
-            "State":
-            {
-                "name": str
-            },
-            "City":
-            {
-                "state_id": str,
-                "name": str
-            },
-            "Review":
-            {
-                "place_id": str,
-                "user_id": str,
-                "text": str
-            },
-            "Amenity":
-            {
-                "name": str
-            }
             }
