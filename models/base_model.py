@@ -16,7 +16,7 @@ class BaseModel:
             - **kwargs: dict of key-values arguments
         """
 
-        if kwargs is not None and kwargs != {}:
+        if kwargs is not None or kwargs != {}:
             for key in kwargs:
                 if key == "__class__":
                     continue
@@ -37,7 +37,7 @@ class BaseModel:
 
     def save(self):
         """Updates updated_at attribute  and saves the instance"""
-        self.updated_at = datetime.today()
+        self.updated_at = datetime.now()
         from models import storage
         storage.save()
 
