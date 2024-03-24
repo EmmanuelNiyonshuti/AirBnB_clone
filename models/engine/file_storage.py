@@ -55,7 +55,7 @@ class FileStorage:
         """
         Serialize _objects and saves it to a json file.
         """
-        with open(FileStorage.__file_path, "r+", encoding="utf-8") as json_f:
+        with open(FileStorage.__file_path, "w", encoding="utf-8") as json_f:
             my_dict = {k: v.to_dict()for k, v in FileStorage.__objects.items()}
             return json.dump(my_dict, json_f)
 
