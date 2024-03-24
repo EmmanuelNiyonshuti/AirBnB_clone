@@ -1,8 +1,12 @@
 #!/usr/bin/python3
+"""
+This module contains tests for the base module class.
+"""
 import unittest
 from models.base_model import BaseModel
 from datetime import datetime
 import json
+
 
 class TestBaseModel(unittest.TestCase):
     """
@@ -57,8 +61,8 @@ class TestBaseModel(unittest.TestCase):
         """
         Test the __str__ method of the BaseModel class.
         """
-        expected_output = "[BaseModel] ({}) {}".format(self.model.id, self.model.__dict__)
-        self.assertEqual(str(self.model), expected_output)
+        expctd_output = f"[BaseModel] ({self.model.id}) {self.model.__dict__}"
+        self.assertEqual(str(self.model), expctd_output)
 
     def test_save_method(self):
         """
@@ -119,8 +123,3 @@ class TestBaseModel(unittest.TestCase):
         # Check if created_at and updated_at are datetime objects
         self.assertIsInstance(new_model.created_at, datetime)
         self.assertIsInstance(new_model.updated_at, datetime)
-
-
-
-if __name__ == '__main__':
-    unittest.main()

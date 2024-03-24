@@ -1,8 +1,18 @@
 #!/usr/bin/python3
-"""Tests City object"""
+"""
+This module comprises tests for a Amenity subclass
+of basemodel class.
+"""
 import unittest
 from models.amenity import Amenity
 
+
 class TestAmenity(unittest.TestCase):
+    """
+    Test cases for the Amenity class.
+    """
     def test_place_id_attr(self):
+        """
+        Test case to verify the name attribute of Amenity class.
+        """
         self.assertEqual(Amenity.name, "")
