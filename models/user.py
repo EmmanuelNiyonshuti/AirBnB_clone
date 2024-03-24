@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-This module comprises a subclass of base module class.
+This module comprises a User subclass of base module class.
 """
 from models.base_model import BaseModel
 
