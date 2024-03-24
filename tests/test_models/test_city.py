@@ -15,7 +15,7 @@ class TestCity(unittest.TestCase):
         """
         Test case to verify the State_id attribute of the City class.
         """
-        self.assertEqual(City.State_id, "")
+        self.assertEqual(City.state_id, "")
 
     def test_name_attr(self):
         """
