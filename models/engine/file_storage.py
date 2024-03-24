@@ -20,22 +20,17 @@ from models.review import Review
 
 class FileStorage:
     """
-    This class performs serialization and deserialization of Python instances, 
-    allowing them to be saved to a JSON file and later loaded back into memory 
-    as instances. It provides methods to store instances as JSON data in a file 
+    This class performs serialization and deserialization of Python instances,
+    allowing them to be saved to a JSON file and later loaded back into memory
+    as instances. It provides methods to store instances as JSON data
+    in a file
     and to retrieve instances from a previously saved JSON file.
-    
+
     Attributes:
          __objects (dict): A dictionary containing all stored instances.
-        __file_path (str): The path to the JSON file where instances will be stored.
-        
-    Methods:
-        all(self): Retrieves all stored instances from the JSON file and returns 
-            them as a dictionary.
-        new(self, obj): Adds a new instance to the storage.
-        save(self): Saves all instances to the JSON file.
-        reload(self): Reloads instances from the JSON file into memory.
-    """
+        __file_path (str): The path to the JSON file where
+        instances will be stored.
+        """
 
     __file_path, __objects = "file.json", {}
 
@@ -80,6 +75,7 @@ class FileStorage:
             obj_class = self.all_classes()[class_name]
             objects[id] = obj_class(**data)
             FileStorage.__objects = objects
+        return FileStorage.__objects
 
     def all_classes(self):
         """
