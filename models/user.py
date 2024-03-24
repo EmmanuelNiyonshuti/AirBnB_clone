@@ -20,6 +20,7 @@ class User(BaseModel):
                 'created_at': self.created_at.isoformat('T'),
                 'updated_at': self.updated_at.isoformat('T')
                  }
+
     def __str__(self):
         """Returns a string representation of the instance"""
         return f"[{__class__.__name__}] ({self.id}) {self.__dict__}"
