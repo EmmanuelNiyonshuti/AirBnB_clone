@@ -11,7 +11,7 @@ class TestAmenity(unittest.TestCase):
     """
     Test cases for the Amenity class.
     """
-    def test_place_id_attr(self):
+    def test_name_attr(self):
         """
         Test case to verify the name attribute of Amenity class.
         """
