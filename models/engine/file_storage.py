@@ -59,14 +59,17 @@ class FileStorage:
             return
 
         else:
-            with open(FileStorage.__file_path, encoding="utf-8") as json_f:
-                serialized_data = json.load(json_f)
-            objects = {}
-            for id, data in serialized_data.items():
-                class_name = data["__class__"]
-                obj_class = self.all_classes()[class_name]
-                objects[id] = obj_class(**data)
-                FileStorage.__objects = objects
+            try:
+                with open(FileStorage.__file_path, encoding="utf-8") as json_f:
+                    serialized_data = json.load(json_f)
+                objects = {}
+                for id, data in serialized_data.items():
+                    class_name = data["__class__"]
+                    obj_class = self.all_classes()[class_name]
+                    objects[id] = obj_class(**data)
+                    FileStorage.__objects = objects
+            except json.JSONDecodeError:
+                pass
 
     def all_classes(self):
         """
