@@ -97,7 +97,8 @@ class TestBaseModel(unittest.TestCase):
 
     def test_create_instance_from_dict(self):
         """
-        Test if a BaseModel instance can be created from a dictionary representation.
+        Test if a BaseModel instance can be created
+        from a dictionary representation.
         """
         model_dict = self.model.to_dict()
         new_model = BaseModel(**model_dict)
@@ -112,10 +113,7 @@ class TestBaseModel(unittest.TestCase):
         """
         Test if a BaseModel instance can be created from an empty dictionary.
         """
-        # Create a new instance from an empty dictionary
         new_model = BaseModel({})
-
-        # Check if the id, created_at, and updated_at attributes are properly initialized
         self.assertIsNotNone(new_model.id)
         self.assertIsNotNone(new_model.created_at)
         self.assertIsNotNone(new_model.updated_at)
