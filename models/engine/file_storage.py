@@ -55,7 +55,7 @@ class FileStorage:
         """
         Serialize _objects and saves it to a json file.
         """
-        with open(FileStorage.__file_path, "w", encoding="utf-8") as json_f:
+        with open(FileStorage.__file_path, "a", encoding="utf-8") as json_f:
             my_dict = {k: v.to_dict()for k, v in FileStorage.__objects.items()}
             return json.dump(my_dict, json_f)
 
@@ -75,5 +75,74 @@ class FileStorage:
             obj_class = self.all_classes()[class_name]
             objects[id] = obj_class(**data)
             FileStorage.__objects = objects
-        return FileStorage.__objects
 
+    def all_classes(self):
+        """
+        Helper method
+        Returns a dictionary mapping class names to their actual class objects.
+        """
+        return{
+            "BaseModel": BaseModel,
+            "User": User,
+            "State": State,
+            "City": City,
+            "Amenity": Amenity,
+            "Place": Place,
+            "Review": Review
+            }
+
+    def obj_attr(self):
+        """
+        Helper Method
+        Returns a nested dictionary  of class names with the dictionary
+        of their attributes mapping to their types accordingly.
+        """
+        return
+    {
+        "BaseModel":
+        {
+            "id": str,
+            "created_at": datetime.datetime,
+            "updated_at": datetime.datetime
+        },
+        "User":
+        {
+            "email": str,
+            "password": str,
+            "first_name": str,
+            "last_name": str
+        },
+        "Place":
+        {
+            "city_id": str,
+            "user_id": str,
+            "name": str,
+            "description": str,
+            "number_rooms": int,
+            "number_bathrooms": int,
+            "max_guest": int,
+            "price_by_night": int,
+            "latitude": float,
+            "longitude": float,
+            "amenity_ids": []
+        },
+        "State":
+        {
+            "name": str
+        },
+        "City":
+        {
+            "state_id": str,
+            "name": str
+        },
+        "Review":
+        {
+            "place_id": str,
+            "user_id": str,
+            "text": str
+        },
+        "Amenity":
+        {
+            "name": str
+        }
+    }
