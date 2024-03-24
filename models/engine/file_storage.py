@@ -55,7 +55,7 @@ class FileStorage:
         """
         if not os.path.exists(FileStorage.__file_path):
             return
-        with open(FileStorage.__file_path, "r", encoding="utf-8") as json_f:
+        with open(FileStorage.__file_path, encoding="utf-8") as json_f:
             serialized_data = json.load(json_f)
         objects = {}
         for id, data in serialized_data.items():
@@ -70,7 +70,7 @@ class FileStorage:
         Returns a dictionary mapping class names
         to their actual class objects.
         """
-        _classes = {
+        return{
             "BaseModel": BaseModel,
             "User": User,
             "State": State,
@@ -79,4 +79,3 @@ class FileStorage:
             "Place": Place,
             "Review": Review
             }
-        return _classes

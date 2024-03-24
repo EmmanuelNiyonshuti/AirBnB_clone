@@ -18,11 +18,9 @@ class BaseModel:
 
         if kwargs is not None and kwargs != {}:
             for key in kwargs:
-                """
                 if key == "__class__":
                     continue
-                """
-                if key == "created_at":
+                elif key == "created_at":
                     self.__dict__["created_at"] = datetime.strptime(
                         kwargs["created_at"], "%Y-%m-%dT%H:%M:%S.%f")
                 elif key == "updated_at":
@@ -51,7 +49,6 @@ class BaseModel:
                 'created_at': self.created_at.isoformat('T'),
                 'updated_at': self.updated_at.isoformat('T')
                  }
-
     def __str__(self):
         """Returns a string representation of the instance"""
         return f"[{__class__.__name__}] ({self.id}) {self.__dict__}"
