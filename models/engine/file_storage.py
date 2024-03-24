@@ -20,18 +20,8 @@ from models.review import Review
 
 class FileStorage:
     """
-    This class performs serialization and deserialization of Python instances,
-    allowing them to be saved to a JSON file and later loaded back into memory
-    as instances. It provides methods to store instances as JSON data
-    in a file
-    and to retrieve instances from a previously saved JSON file.
-
-    Attributes:
-         __objects (dict): A dictionary containing all stored instances.
-        __file_path (str): The path to the JSON file where
-        instances will be stored.
-        """
-
+    This class performs serialization and deserialization of Python instances.
+    """
     __file_path, __objects = "file.json", {}
 
     def all(self):
@@ -57,7 +47,22 @@ class FileStorage:
         """
         with open(FileStorage.__file_path, "w", encoding="utf-8") as json_f:
             my_dict = {k: v.to_dict()for k, v in FileStorage.__objects.items()}
-            return json.dump(my_dict, json_f)
+            json.dump(my_dict, json_f)
+
+    def all_classes(self):
+        """
+        Helper method
+        Returns a dictionary mapping class names to their actual class objects.
+        """
+        return{
+            "BaseModel": BaseModel,
+            "User": User,
+            "State": State,
+            "City": City,
+            "Amenity": Amenity,
+            "Place": Place,
+            "Review": Review
+            }
 
     def reload(self):
         """
@@ -75,21 +80,6 @@ class FileStorage:
             obj_class = self.all_classes()[class_name]
             objects[id] = obj_class(**data)
             FileStorage.__objects = objects
-
-    def all_classes(self):
-        """
-        Helper method
-        Returns a dictionary mapping class names to their actual class objects.
-        """
-        return{
-            "BaseModel": BaseModel,
-            "User": User,
-            "State": State,
-            "City": City,
-            "Amenity": Amenity,
-            "Place": Place,
-            "Review": Review
-            }
 
     def obj_attr(self):
         """
