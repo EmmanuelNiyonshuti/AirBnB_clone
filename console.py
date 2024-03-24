@@ -10,7 +10,11 @@ from models.engine.file_storage import FileStorage
 
 
 class HBNBCommand(cmd.Cmd):
-
+    """
+    HBNBCommand class is the entry point of the console application.
+    It provides functionalities for managing instances of various classes
+    and interacts with the storage system.
+    """
     _attrs = {
         "BaseModel":
         {
@@ -148,6 +152,14 @@ class HBNBCommand(cmd.Cmd):
         print("Prints all string representation of all instances based"
               "or not on the class name")
         print("Ex: $ all BaseModel or $ all")
+
+    def do_count(self, line):
+        if line == "" or line is None:
+            return
+
+        class_name = line.split()[0]
+        count = len(storage.all()[class_name])
+        print(count)   
 
     def do_update(self, line):
         """
