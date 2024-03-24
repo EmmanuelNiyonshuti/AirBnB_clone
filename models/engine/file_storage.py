@@ -7,13 +7,6 @@ and deserialization of instances of the classes.
 """
 import json
 import os
-from models.base_model import BaseModel
-from models.user import User
-from models.state import State
-from models.city import City
-from models.place import Place
-from models.amenity import Amenity
-from models.review import Review
 
 
 class FileStorage:
@@ -56,7 +49,7 @@ class FileStorage:
         """
         if not os.path.exists(FileStorage.__file_path):
             return
-        with open(FileStorage.__file_path, "r", encoding="utf-8") as json_f:
+        with open(FileStorage.__file_path, encoding="utf-8") as json_f:
             serialized_data = json.load(json_f)
         objects = {}
         for id, data in serialized_data.items():
@@ -71,6 +64,13 @@ class FileStorage:
         Returns a dictionary mapping class names
         to their actual class objects.
         """
+        from models.base_model import BaseModel
+        from models.user import User
+        from models.state import State
+        from models.city import City
+        from models.place import Place
+        from models.amenity import Amenity
+        from models.review import Review
         return{
             "BaseModel": BaseModel,
             "User": User,
