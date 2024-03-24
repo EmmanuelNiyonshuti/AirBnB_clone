@@ -8,7 +8,13 @@ of the classes.
 """
 import json
 import os
-
+from models.base_model import BaseModel
+from models.user import User
+from models.state import State
+from models.city import City
+from models.place import Place
+from models.amenity import Amenity
+from models.review import Review
 
 class FileStorage:
     """
@@ -58,20 +64,13 @@ class FileStorage:
             class_name = data["__class__"]
             obj_class = self.all_classes()[class_name]
             objects[id] = obj_class(**data)
-            FileStorage.__objects = objects
+        FileStorage.__objects = objects
 
     def all_classes(self):
         """
         Helper method
         Returns a dictionary mapping class names to their actual class objects.
         """
-        from models.base_model import BaseModel
-        from models.user import User
-        from models.state import State
-        from models.city import City
-        from models.place import Place
-        from models.amenity import Amenity
-        from models.review import Review
         return{
             "BaseModel": BaseModel,
             "User": User,
