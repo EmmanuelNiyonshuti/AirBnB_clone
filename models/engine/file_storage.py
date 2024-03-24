@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-This module complises File strorage class
+This module complises File strorage class.
 File storage class consist of methods and attributes
 designed to handle serialization
 and deserialization of instances
