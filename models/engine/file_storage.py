@@ -15,7 +15,7 @@ from models.place import Place
 from models.amenity import Amenity
 from models.review import Review
 
-class FileStorage:
+class FileStorage(BaseModel):
     """
     This class performs serialization and deserialization of Python instances.
     """
