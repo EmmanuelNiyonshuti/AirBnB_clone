@@ -67,8 +67,9 @@ class FileStorage:
 
     def all_classes(self):
         """
-        Helper method
-        Returns a dictionary mapping class names to their actual class objects.
+        Helper method.
+        Returns a dictionary mapping class names
+        to their actual class objects.
         """
         return{
             "BaseModel": BaseModel,
