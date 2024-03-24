@@ -3,8 +3,7 @@
 This module complises File strorage class.
 File storage class consist of methods and attributes
 designed to handle serialization
-and deserialization of instances
-of the classes.
+and deserialization of instances of the classes.
 """
 import json
 import os
