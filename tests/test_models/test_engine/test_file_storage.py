@@ -64,7 +64,7 @@ class TestFileStorage(unittest.TestCase):
         self.storage.new(obj)
         self.storage.save()
         self.assertTrue(os.path.exists(FileStorage._FileStorage__file_path))
-        with open(FileStorage._FileStorage__file_path, "r", encoding="utf-8") as f:
+        with open(FileStorage._FileStorage__file_path, encoding="utf-8") as f:
             data = json.load(f)
 
         self.assertIn("BaseModel." + obj.id, data)
