@@ -72,23 +72,23 @@ class HBNBCommand(cmd.Cmd):
         """
         return True
 
-    def help_quit(self):
-        print('Quit command to exit the program' + '\n')
-
     def do_EOF(self, line):
-        """EOF to Exit the program"""
+        """
+        Handles End-Of-File (EOF) to exit the program
+        """
         return True
-
-    def help_EOF(self):
-        print("EOF to Exit the program")
 
     def emptyline(self):
         """
-        pass when nothing is passed.
+        Does nothing when an empty line is entered
         """
         pass
 
+
     def do_create(self, line):
+        """
+        Creates a new instance of a specified class
+        """
         if line is None or line == "":
             print("** class name missing **")
         elif line not in storage.all_classes():
@@ -98,10 +98,10 @@ class HBNBCommand(cmd.Cmd):
             new_instance.save()
             print(new_instance.id)
 
-    def help_create(self):
-        print("Creates a new instance and prints the id")
-
     def do_show(self, line):
+        """
+        Displays the string representation of an instance
+        """
         if line is None or line == "":
             print("** class name missing **")
         else:
@@ -116,10 +116,10 @@ class HBNBCommand(cmd.Cmd):
                 else:
                     print(storage.all()[f"{arg[0]}.{arg[1]}"])
 
-    def help_show(self):
-        print("Prints the string representation of an instance")
-
     def do_destroy(self, line):
+        """
+        Deletes an instance based on the class name and id.
+        """
         if line == "" or line is None:
             print(" ** class name missing ** ")
         else:
@@ -135,10 +135,10 @@ class HBNBCommand(cmd.Cmd):
                     del(storage.all()[f"{arg[0]}.{arg[1]}"])
                     storage.save()
 
-    def help_destroy(self):
-        print("Deletes an instance based on the class name and id")
-
     def do_all(self, line):
+        """
+        Prints all string representations of instances.
+        """
         if not line:
             list_str = [str(v) for k, v in storage.all().items()]
             print(list_str)
@@ -148,12 +148,10 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** class doesn't exist **")
 
-    def help_all(self):
-        print("Prints all string representation of all instances based"
-              "or not on the class name")
-        print("Ex: $ all BaseModel or $ all")
-
     def do_count(self, line):
+        """
+        Counts the number of instances of a class.
+        """
         if line == "" or line is None:
             return
 
@@ -163,12 +161,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_update(self, line):
         """
-        Command: update <class_name> <instance_id> <attr_name> <attr_value>
-        Updates the specified attr of the instance identified by <instance_id>
-        belonging to the class <class_name> with the provided <attr_value>.
-        Example: update User c331cb80-f2fc-4b68-8fd9-f12c10ef1a9f name "john"
-        This updates the 'name' attribute of the BaseModel instance with ID
-        'a032a0e2-199e-4692-8d3c-b19f65ae71c2' to 'New Name'
+        Updates an attribute of an instance.
         """
         if line == "" or line is None:
             print(" ** class name missing ** ")
