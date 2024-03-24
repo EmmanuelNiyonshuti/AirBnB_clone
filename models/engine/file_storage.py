@@ -20,14 +20,29 @@ from models.review import Review
 
 class FileStorage:
     """
-    serializes instances to a JSON file
-    and deserializes JSON file back to instances
+    This class performs serialization and deserialization of Python instances, 
+    allowing them to be saved to a JSON file and later loaded back into memory 
+    as instances. It provides methods to store instances as JSON data in a file 
+    and to retrieve instances from a previously saved JSON file.
+    
+    Attributes:
+         __objects (dict): A dictionary containing all stored instances.
+        __file_path (str): The path to the JSON file where instances will be stored.
+        
+    Methods:
+        all(self): Retrieves all stored instances from the JSON file and returns 
+            them as a dictionary.
+        new(self, obj): Adds a new instance to the storage.
+        save(self): Saves all instances to the JSON file.
+        reload(self): Reloads instances from the JSON file into memory.
     """
 
     __file_path, __objects = "file.json", {}
 
     def all(self):
-        """returns the dictionary __objects"""
+        """
+        Returns the dictionary __objects.
+        """
         return FileStorage.__objects
 
     def new(self, obj):
@@ -43,7 +58,7 @@ class FileStorage:
 
     def save(self):
         """
-        Saves __objects dictionary to a JSON file.
+        Serialize _objects and saves it to a json file.
         """
         with open(FileStorage.__file_path, "w", encoding="utf-8") as json_f:
             my_dict = {k: v.to_dict()for k, v in FileStorage.__objects.items()}
@@ -51,25 +66,20 @@ class FileStorage:
 
     def reload(self):
         """
-        
         Deserialize JSON file into __objects only if the JSOn file exists.
-        otherwise it do nothing.
+        Otherwise it does nothing.
         """
         if not os.path.exists(FileStorage.__file_path):
             return
 
-        else:
-            try:
-                with open(FileStorage.__file_path, encoding="utf-8") as json_f:
-                    serialized_data = json.load(json_f)
-                objects = {}
-                for id, data in serialized_data.items():
-                    class_name = data["__class__"]
-                    obj_class = self.all_classes()[class_name]
-                    objects[id] = obj_class(**data)
-                    FileStorage.__objects = objects
-            except json.JSONDecodeError:
-                pass
+        with open(FileStorage.__file_path, encoding="utf-8") as json_f:
+            serialized_data = json.load(json_f)
+        objects = {}
+        for id, data in serialized_data.items():
+            class_name = data["__class__"]
+            obj_class = self.all_classes()[class_name]
+            objects[id] = obj_class(**data)
+            FileStorage.__objects = objects
 
     def all_classes(self):
         """
