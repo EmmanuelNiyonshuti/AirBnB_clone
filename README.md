@@ -1,4 +1,5 @@
 # 0x00. AirBnB clone - The console
+![image](https://github.com/EmmanuelNiyonshuti/AirBnB_clone/assets/142030687/9985dc8f-5826-4763-82f2-0d8688a44cb6)
 
 ## Project Description
 
