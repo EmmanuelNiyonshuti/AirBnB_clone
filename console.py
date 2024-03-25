@@ -4,7 +4,6 @@ This module comprises the entry point of the My console.
 """
 import cmd
 import datetime
-import re
 from models.base_model import BaseModel
 from models import storage
 from models.engine.file_storage import FileStorage
@@ -184,6 +183,32 @@ class HBNBCommand(cmd.Cmd):
                 instance = storage.all()[f"{cls_name}.{inst_id}"]
                 setattr(instance, attr_name, attr_value)
                 storage.save()
+
+    def do_count(self, line):
+        """
+         Retrieve the number of instances of a class.
+        """
+        if line is None or line == "":
+            return
+        if line in storage.all_classes():
+            i = 0
+            for k in storage.all().keys():
+                k = k.replace('.', ' ')
+                # print(k)
+                k = k.split(' ')
+                if k[0] == line:
+                    # print(f"{k[0]} = {line}")
+                    i += 1
+            print(i)
+
+    def precmd(self, line):
+        if line is None or line == "":
+            pass
+        if '.' in line:
+            line = line.replace('.',' ').replace('(', '').replace(')', '')
+            line = line.split(' ')
+            line = f"{line[1]} {line[0]}"
+        return cmd.Cmd.precmd(self, line)
 
 
 if __name__ == '__main__':
