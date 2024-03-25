@@ -4,6 +4,7 @@ This module comprises the entry point of the My console.
 """
 import cmd
 import datetime
+import re
 from models.base_model import BaseModel
 from models import storage
 from models.engine.file_storage import FileStorage
@@ -84,7 +85,6 @@ class HBNBCommand(cmd.Cmd):
         """
         pass
 
-
     def do_create(self, line):
         """
         Creates a new instance of a specified class
@@ -148,17 +148,6 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** class doesn't exist **")
 
-    def do_count(self, line):
-        """
-        Counts the number of instances of a class.
-        """
-        if line == "" or line is None:
-            return
-
-        class_name = line.split()[0]
-        count = len(storage.all()[class_name])
-        print(count)   
-
     def do_update(self, line):
         """
         Updates an attribute of an instance.
@@ -184,7 +173,6 @@ class HBNBCommand(cmd.Cmd):
                 attr_value = arg[3]
             try:
                 class_attributes = self._attrs.get(cls_name, {})
-                # print(class_attributes)
                 if attr_name in class_attributes:
                     try:
                         attr_value = class_attributes[attr_name](attr_value)
