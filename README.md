@@ -20,13 +20,14 @@ for now some of the available commands includes:
 - show
 - create
 - update
+- count
 
 Additionally, the following actions can be performed as part of the command-line interpreter's implementation, coupled with the backend and file storage system:
 
 - Creating new objects (e.g., a new User or a new Place)
 - Retrieving an object from a file, a database, etc.
 - Destroying an object
-
+- Counting the number of objects. 
 ## Getting Started
 
 These instructions will help you set up a copy of the project on your local machine (Linux distro) for development and testing purposes.

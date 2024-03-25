@@ -71,8 +71,7 @@ class FileStorage:
         Returns a dictionary mapping class names
         to their actual class objects.
         """
-        return
-    {
+        return{
             "BaseModel": BaseModel,
             "User": User,
             "State": State,
