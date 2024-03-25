@@ -6,6 +6,7 @@ import cmd
 import datetime
 from models.base_model import BaseModel
 from models import storage
+from models.engine.file_storage import FileStorage
 
 
 class HBNBCommand(cmd.Cmd):
@@ -83,9 +84,10 @@ class HBNBCommand(cmd.Cmd):
         """
         pass
 
+
     def do_create(self, line):
         """
-        Creates a new instance of a specified class.
+        Creates a new instance of a specified class
         """
         if line is None or line == "":
             print("** class name missing **")
@@ -98,7 +100,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self, line):
         """
-        Displays the string representation of an instance.
+        Displays the string representation of an instance
         """
         if line is None or line == "":
             print("** class name missing **")
@@ -116,8 +118,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_destroy(self, line):
         """
-        Deletes an instance based on the class name and id
-        Saves the changes.
+        Deletes an instance based on the class name and id.
         """
         if line == "" or line is None:
             print(" ** class name missing ** ")
@@ -138,15 +139,25 @@ class HBNBCommand(cmd.Cmd):
         """
         Prints all string representations of instances.
         """
-        if line == "" or line is None:
+        if not line:
             list_str = [str(v) for k, v in storage.all().items()]
             print(list_str)
         elif line and line in storage.all_classes():
             list_str = [str(v) for k, v in storage.all().items()]
             print(list_str)
         else:
-            if line not in storage.all_classes():
-                print("** class doesn't exist **")
+            print("** class doesn't exist **")
+
+    def do_count(self, line):
+        """
+        Counts the number of instances of a class.
+        """
+        if line == "" or line is None:
+            return
+
+        class_name = line.split()[0]
+        count = len(storage.all()[class_name])
+        print(count)   
 
     def do_update(self, line):
         """
@@ -171,21 +182,20 @@ class HBNBCommand(cmd.Cmd):
                 inst_id = arg[1]
                 attr_name = arg[2]
                 attr_value = arg[3]
-
+            try:
                 class_attributes = self._attrs.get(cls_name, {})
-                # for k, v in class_attributes.items():
-                #     print(f"{k} : {v}")
+                # print(class_attributes)
                 if attr_name in class_attributes:
-                    attr_type = class_attributes.get(attr_name)
-                    # print(attr_type)
                     try:
-                        attr_type(attr_value)
-                    except (ValueError, TypeError) as e:
+                        attr_value = class_attributes[attr_name](attr_value)
+                    except ValueError:
                         pass
-                    else:
-                        inst = storage.all()[f"{cls_name}.{inst_id}"]
-                        setattr(inst, attr_name, attr_value)
-                        storage.save()
+            except UnboundLocalError:
+                pass
+            else:
+                instance = storage.all()[f"{cls_name}.{inst_id}"]
+                setattr(instance, attr_name, attr_value)
+                storage.save()
 
 
 if __name__ == '__main__':
