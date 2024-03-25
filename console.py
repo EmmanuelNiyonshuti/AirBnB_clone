@@ -6,7 +6,6 @@ import cmd
 import datetime
 from models.base_model import BaseModel
 from models import storage
-from models.engine.file_storage import FileStorage
 
 
 class HBNBCommand(cmd.Cmd):
@@ -139,7 +138,7 @@ class HBNBCommand(cmd.Cmd):
         """
         Prints all string representations of instances.
         """
-        if not line:
+        if line == "" or line is None:
             list_str = [str(v) for k, v in storage.all().items()]
             print(list_str)
         elif line and line in storage.all_classes():
@@ -148,13 +147,6 @@ class HBNBCommand(cmd.Cmd):
         else:
             if line not in storage.all_classes():
                 print("** class doesn't exist **")
-
-    def do_count(self, line):
-        """
-        Counts the number of instances of a class.
-        """
-        if line == "" or line is None:
-            return
 
     def do_update(self, line):
         """
@@ -189,13 +181,11 @@ class HBNBCommand(cmd.Cmd):
                     try:
                         attr_type(attr_value)
                     except (ValueError, TypeError) as e:
-                        print(e)
+                        pass
                     else:
                         inst = storage.all()[f"{cls_name}.{inst_id}"]
                         setattr(inst, attr_name, attr_value)
                         storage.save()
-                else:
-                    print("invalid attribute name!")
 
 
 if __name__ == '__main__':
