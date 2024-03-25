@@ -84,10 +84,9 @@ class HBNBCommand(cmd.Cmd):
         """
         pass
 
-
     def do_create(self, line):
         """
-        Creates a new instance of a specified class
+        Creates a new instance of a specified class.
         """
         if line is None or line == "":
             print("** class name missing **")
@@ -100,7 +99,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self, line):
         """
-        Displays the string representation of an instance
+        Displays the string representation of an instance.
         """
         if line is None or line == "":
             print("** class name missing **")
@@ -118,7 +117,8 @@ class HBNBCommand(cmd.Cmd):
 
     def do_destroy(self, line):
         """
-        Deletes an instance based on the class name and id.
+        Deletes an instance based on the class name and id
+        Saves the changes.
         """
         if line == "" or line is None:
             print(" ** class name missing ** ")
@@ -139,14 +139,15 @@ class HBNBCommand(cmd.Cmd):
         """
         Prints all string representations of instances.
         """
-        if not line:
+        if line == "" or line is None:
             list_str = [str(v) for k, v in storage.all().items()]
             print(list_str)
         elif line and line in storage.all_classes():
             list_str = [str(v) for k, v in storage.all().items()]
             print(list_str)
         else:
-            print("** class doesn't exist **")
+            if line not in storage.all_classes():
+                print("** class doesn't exist **")
 
     def do_count(self, line):
         """
@@ -157,7 +158,7 @@ class HBNBCommand(cmd.Cmd):
 
         class_name = line.split()[0]
         count = len(storage.all()[class_name])
-        print(count)   
+        print(count)
 
     def do_update(self, line):
         """
