@@ -139,7 +139,7 @@ class HBNBCommand(cmd.Cmd):
         """
         Prints all string representations of instances.
         """
-        if line == "" or line is None:
+        if not line:
             list_str = [str(v) for k, v in storage.all().items()]
             print(list_str)
         elif line and line in storage.all_classes():
@@ -155,10 +155,6 @@ class HBNBCommand(cmd.Cmd):
         """
         if line == "" or line is None:
             return
-
-        class_name = line.split()[0]
-        count = len(storage.all()[class_name])
-        print(count)
 
     def do_update(self, line):
         """
@@ -183,20 +179,23 @@ class HBNBCommand(cmd.Cmd):
                 inst_id = arg[1]
                 attr_name = arg[2]
                 attr_value = arg[3]
-            try:
+
                 class_attributes = self._attrs.get(cls_name, {})
-                # print(class_attributes)
+                # for k, v in class_attributes.items():
+                #     print(f"{k} : {v}")
                 if attr_name in class_attributes:
+                    attr_type = class_attributes.get(attr_name)
+                    # print(attr_type)
                     try:
-                        attr_value = class_attributes[attr_name](attr_value)
-                    except ValueError:
-                        pass
-            except UnboundLocalError:
-                pass
-            else:
-                instance = storage.all()[f"{cls_name}.{inst_id}"]
-                setattr(instance, attr_name, attr_value)
-                storage.save()
+                        attr_type(attr_value)
+                    except (ValueError, TypeError) as e:
+                        print(e)
+                    else:
+                        inst = storage.all()[f"{cls_name}.{inst_id}"]
+                        setattr(inst, attr_name, attr_value)
+                        storage.save()
+                else:
+                    print("invalid attribute name!")
 
 
 if __name__ == '__main__':
