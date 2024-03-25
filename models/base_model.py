@@ -8,6 +8,9 @@ from datetime import datetime
 
 
 class BaseModel:
+    """
+    This class defines all common attributes/methods of other classes.
+    """
     def __init__(self, *args, **kwargs):
         """Initializes instance attributes
 
