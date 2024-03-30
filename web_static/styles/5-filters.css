@@ -1,0 +1,29 @@
+.locations{
+    color: black;
+    height: 100%;
+    width: 25%;
+    border-right: 1px solid #DDDDDD;
+    padding-left: 50px;
+}
+.locations h3{
+    font-weight:600;
+}
+.locations h4{
+    font-weight:400;
+    font-size: 14px;
+}
+.amenities {
+    color: black;
+    margin-right: auto;
+    height: 100%;
+    width: 25%;
+    border-right: 1px #DDDDDD;
+    padding-left: 50px;
+}
+.amenities h3{
+    font-weight:600;
+}
+.amenities h4{
+    font-weight:400;
+    font-size: 14px;
+}
