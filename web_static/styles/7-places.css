@@ -1,20 +1,19 @@
-.places h1{
-    text-align: left;
+.places {
+    text-align: center;
+  }
+  .places h1 {
     font-size: 30px;
-}
-article{
+    text-align: left;
+  }
+  article {
     width: 390px;
+    border: 1px solid #FF5A5F;
+    border-radius: 4px;
     padding: 20px;
     margin: 20px;
-    border: 1px #FF5A5F;
-    border-radius: 4px;
-}
-article h2{  
+    display: inline-block;
+  }
+  article h2 {
     font-size: 30px;
-    /* display: inline-block;
-    padding: 20px;
-    margin: auto;
-    position: relative;
-    margin-left: auto;
-    background-color: black; */
-}
+    text-align: center;
+  }

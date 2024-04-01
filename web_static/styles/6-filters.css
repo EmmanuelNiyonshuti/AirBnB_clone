@@ -2,7 +2,7 @@
     display: none;
     color: black;
     width: 100%;
-    border: 1px  #DDDDDD;
+    border: 1px  #DDDDDD solid;
     border-radius: 4px;
     list-style: none;
 }

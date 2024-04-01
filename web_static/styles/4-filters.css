@@ -21,13 +21,6 @@ button{
     border-radius: 4px;
     cursor: pointer;
     transition: opacity 0.3s ease;
-    /* margin-left: auto; */
-    /* margin-top: 30px;
-    margin-bottom: 30px;
-    margin-right: auto;
-    position: absolute;
-    right: 25px;
-    margin-left: 780px; */
 }
 button:hover {
     opacity: 90%;
