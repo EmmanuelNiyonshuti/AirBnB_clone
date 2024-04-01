@@ -1,15 +1,13 @@
 .filters {
     color: white;
-    /* height: 100px; */
     height: 70px;
     width: 100%;
     border: 1px solid #DDDDDD;
     border-radius: 4px;
-    /* Flexbox layout model */
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    padding: 0 20px;
+    padding: 0 30px;
 }
 button{
     font-size: 18px;
@@ -20,7 +18,7 @@ button{
     border: 0;
     border-radius: 4px;
     cursor: pointer;
-    transition: opacity 0.3s ease;
+    transition: opacity;
 }
 button:hover {
     opacity: 90%;
