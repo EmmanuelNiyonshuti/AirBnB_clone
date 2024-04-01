@@ -210,6 +210,19 @@ class HBNBCommand(cmd.Cmd):
             line = f"{line[1]} {line[0]}"
         return cmd.Cmd.precmd(self, line)
 
+    # def precmd(self, line):
+    #     if line is None or line == "":
+    #         pass
+    #     if '.' in line:
+    #         line = line.replace('.',' ').replace('(',' ').replace(')','')
+    #         line = line.split(' ')
+    #         try:
+    #             line[2] = line[2].replace('"', ' ').replace('"', ' ')
+    #             line = f"{line[1]} {line[0]} {line[2]}"
+    #             return cmd.Cmd.precmd(self, line)
+    #         except AttributeError:
+    #             pass
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()

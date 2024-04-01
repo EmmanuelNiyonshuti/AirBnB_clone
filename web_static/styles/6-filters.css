@@ -4,17 +4,13 @@
     width: 100%;
     border: 1px  #DDDDDD solid;
     border-radius: 4px;
-    list-style: none;
+    /* list-style: none; */
 }
 
 .popover h2{
     font-size: 16px;
     margin-bottom: auto;
 }
-.popover li{
-    list-style: none;
-}
-
 
 .locations:hover .popover,
 .amenities:hover .popover{
