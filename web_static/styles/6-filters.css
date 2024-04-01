@@ -1,18 +1,32 @@
+
 .popover{
     display: none;
     color: black;
     width: 100%;
     border: 1px  #DDDDDD solid;
     border-radius: 4px;
-    /* list-style: none; */
+    margin-top: 0px;
+    margin-left: -41px;
+
+}
+
+.amenities ul{
+    margin-left: -50px;
+
 }
 
 .popover h2{
     font-size: 16px;
-    margin-bottom: auto;
 }
-
 .locations:hover .popover,
 .amenities:hover .popover{
    display: block; 
+}
+ul {
+    list-style: none;
+}
+
+.popover ul li{
+    display: flex;
+    align-items: flex-start;
 }
