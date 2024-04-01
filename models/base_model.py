@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-This module comprises a subclass of base module class.
+This module comprises a base module class.
+that class defines the attributes and methods that other classes will inherit.
 """
 
 import uuid
