@@ -10,14 +10,32 @@
 .places h1 {
     font-size: 30px;
 }
-article{
+article div{
     width: 390px;
     border-radius: 4px;
     padding: 20px;
     margin: 20px;
     border: 1px solid #FF5A5F;
     border-radius: 4px;
+    margin-right: 300px;
+    margin-top: -10px;
 }
 article h2{
     font-size: 30px;
+}
+
+
+.home{
+    margin-right: 30px;
+    box-sizing: border-box;
+}
+.Tiny{
+    box-sizing: border-box;
+    margin-left: 500px;
+    margin-top: -150px;
+}
+.suite{
+    box-sizing: border-box;
+    margin-left: 300px;
+    margin-top: 30px;
 }
